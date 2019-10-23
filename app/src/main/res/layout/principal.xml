@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <RelativeLayout
+                android:id="@+id/panel_velocidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/velocidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_iconfinder_streamline_73_185093"
+                    android:paddingRight="20dp">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/title_velocidad"
+                    android:layout_toRightOf="@+id/velocidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Velocidad promedio"
+                    ></TextView>
+
+                <TextView
+                    android:id="@+id/dato_velocidad"
+                    android:layout_toRightOf="@+id/velocidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Velocidad promedio"
+                    android:layout_below="@+id/title_velocidad"
+                    style="@style/AppTheme.H5"
+                    ></TextView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/panel_distancia"
+                android:layout_below="@+id/panel_velocidad"
+                android:layout_width="match_parent"
+                android:paddingTop="25dp"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/distancia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_iconfinder_road_2969394"
+                    android:paddingRight="3dp">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/title_distancia"
+                    android:layout_toRightOf="@+id/distancia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Distancia promedio"
+                    ></TextView>
+
+            <TextView
+                android:id="@+id/dato_distancia"
+                android:layout_toRightOf="@+id/distancia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Distancia promedio"
+                android:layout_below="@+id/title_distancia"
+                style="@style/AppTheme.H5"
+                ></TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/panel_vueltas"
+            android:layout_below="@+id/panel_distancia"
+            android:layout_width="match_parent"
+            android:paddingTop="25dp"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/vueltas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_iconfinder_bike_107227"
+                android:paddingRight="20dp">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/title_vueltas"
+                android:layout_toRightOf="@+id/vueltas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total de vueltas"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/dato_vueltas"
+                android:layout_toRightOf="@+id/vueltas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vueltas"
+                android:layout_below="@+id/title_vueltas"
+                style="@style/AppTheme.H5"
+                ></TextView>
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
