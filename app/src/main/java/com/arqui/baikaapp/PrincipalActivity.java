@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,15 +28,31 @@ public class PrincipalActivity extends Fragment {
 
     View rootView;
     IHttpRequest peticiones;
+    TextView velocidad;
+    TextView vueltas;
+    TextView distancia;
+    Button recargarDatos;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.principal, container, false);
-        final TextView velocidad = (TextView) rootView.findViewById(R.id.dato_velocidad);
-        final TextView vueltas = (TextView) rootView.findViewById(R.id.dato_vueltas);
-        final TextView distancia = (TextView) rootView.findViewById(R.id.dato_distancia);
+        velocidad = (TextView) rootView.findViewById(R.id.dato_velocidad);
+        vueltas = (TextView) rootView.findViewById(R.id.dato_vueltas);
+        distancia = (TextView) rootView.findViewById(R.id.dato_distancia);
+        obtenerDatosMostrar();
+        recargarDatos = (Button) rootView.findViewById(R.id.reload);
+        recargarDatos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                obtenerDatosMostrar();
+            }
+        });
 
+        return rootView;
+    }
+
+    public void obtenerDatosMostrar() {
         String UrlServer = "https://poywhb3qv6.execute-api.us-east-1.amazonaws.com/testing/";
         Retrofit RetrofitClient = new Retrofit
                 .Builder()
@@ -51,9 +68,9 @@ public class PrincipalActivity extends Fragment {
                 double distanciaTotal = (response.body().cantidadVueltas * MainActivity.Circunferencia);
                 double totalVueltas = response.body().cantidadVueltas;
                 double avgVelocidad = distanciaTotal * response.body().diferenciaTiempo;
-                velocidad.setText(String.valueOf(avgVelocidad));
-                vueltas.setText(String.valueOf(totalVueltas));
-                distancia.setText(String.valueOf(distanciaTotal));
+                velocidad.setText(String.valueOf(avgVelocidad) + " m/s");
+                vueltas.setText(String.valueOf(totalVueltas) + " vueltas");
+                distancia.setText(String.valueOf(distanciaTotal) + " m");
             }
 
             @Override
@@ -62,7 +79,6 @@ public class PrincipalActivity extends Fragment {
                 t.printStackTrace();
             }
         });
-        return rootView;
     }
 
     public static boolean verificarConexion(Context contexto) {
